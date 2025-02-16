@@ -61,7 +61,7 @@ export default function Home() {
             {/* Gemini Response Box */}
             {geminiResponse && (
                 <div className="w-full max-w-2xl p-4 border rounded-md shadow-md bg-gray-100"> {/* Response width and styling */}
-                    <h2 className="text-xl font-semibold mb-2">Chatbot Response:</h2>
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">Chatbot Response:</h2>
                     <p className="text-gray-800">{geminiResponse}</p>
                 </div>
             )}
