@@ -37,7 +37,7 @@ export default function Home() {
 
     return (
         <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen"> {/* Centering */}
-            <h1 className="text-3xl font-bold mb-4">PDF Chatbot</h1>
+            <h1 className="text-3xl font-bold mb-4">Pucho Jo Marzi</h1>
 
             <div className="w-full max-w-md mb-4"> {/* Input width constraint */}
             <input
