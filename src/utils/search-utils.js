@@ -93,7 +93,7 @@ export async function calculateTfIdfSimilarity(prompt, chunks) {
         let similarity = cosineSimilarity(promptVector, chunkVector);
         if (isNaN(similarity) || !isFinite(similarity)) { similarity = 0; }
         const stringSim = stringSimilarity.compareTwoStrings(prompt.toLowerCase(), chunk.chunk.toLowerCase());
-        const combinedSimilarity = Math.max(similarity, stringSim * 0.6); 
+        const combinedSimilarity = Math.max(similarity, stringSim * 0.6);
         return { ...chunk, similarity: combinedSimilarity };
     }).sort((a, b) => b.similarity - a.similarity);
     const SIMILARITY_THRESHOLD = 0.01;
