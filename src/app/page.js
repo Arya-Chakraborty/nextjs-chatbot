@@ -43,42 +43,42 @@ export default function Home() {
 
     // Track Cursor Position and Highlight Characters
     useEffect(() => {
-    const handleMouseMove = (event) => {
-        requestAnimationFrame(() => {
-            setCursorPos({
-                x: event.clientX + window.scrollX, // Account for horizontal scroll
-                y: event.clientY + window.scrollY, // Account for vertical scroll
-            });
+        const handleMouseMove = (event) => {
+            requestAnimationFrame(() => {
+                setCursorPos({
+                    x: event.clientX + window.scrollX, // Account for horizontal scroll
+                    y: event.clientY + window.scrollY, // Account for vertical scroll
+                });
 
-            if (bitotsavRef.current) {
-                const haloRect = {
-                    x: event.clientX + window.scrollX - 50, // Adjust for scroll
-                    y: event.clientY + window.scrollY - 50, // Adjust for scroll
-                    width: 100,
-                    height: 100,
-                };
+                if (bitotsavRef.current) {
+                    const haloRect = {
+                        x: event.clientX + window.scrollX - 50, // Adjust for scroll
+                        y: event.clientY + window.scrollY - 50, // Adjust for scroll
+                        width: 100,
+                        height: 100,
+                    };
 
-                const indicesToHighlight = new Set();
-                const bitotsavText = bitotsavRef.current.textContent;
+                    const indicesToHighlight = new Set();
+                    const bitotsavText = bitotsavRef.current.textContent;
 
-                for (let i = 0; i < bitotsavText.length; i++) {
-                    const charRect = getCharRect(bitotsavRef.current, i);
-                    if (rectIntersection(haloRect, charRect)) {
-                        indicesToHighlight.add(i);
+                    for (let i = 0; i < bitotsavText.length; i++) {
+                        const charRect = getCharRect(bitotsavRef.current, i);
+                        if (rectIntersection(haloRect, charRect)) {
+                            indicesToHighlight.add(i);
+                        }
                     }
+
+                    setHighlightedIndices(indicesToHighlight);
                 }
+            });
+        };
 
-                setHighlightedIndices(indicesToHighlight);
-            }
-        });
-    };
+        window.addEventListener('mousemove', handleMouseMove);
 
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-    };
-}, []);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
 
     // Get bounding rectangle of a character
@@ -116,7 +116,7 @@ export default function Home() {
     };
 
     return (
-        <div className="bg-gradient-to-r from-indigo-900 via-purple-900 to-black min-h-screen flex flex-col items-center justify-center font-mono overflow-hidden relative">
+        <div className="bg-gradient-to-r from-amber-900 via-red-900 to-yellow-500 to-black min-h-screen flex flex-col items-center justify-center font-mono overflow-hidden relative">
             {/* Chatbot Interface */}
             <div className="backdrop-blur-lg bg-opacity-30 p-8 rounded-3xl shadow-lg w-full max-w-3xl z-10">
                 <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 mb-6 text-center animate-pulse">
@@ -178,7 +178,7 @@ export default function Home() {
                     <span
                         key={index}
                         style={{
-                            color: highlightedIndices.has(index) ? '#a357ba' : 'transparent',
+                            color: highlightedIndices.has(index) ? '#fce2bf' : 'transparent',
                             transition: 'color 0.5s ease',
                         }}
                     >
@@ -190,8 +190,26 @@ export default function Home() {
 
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute w-40 h-40 bg-purple-500 rounded-full animate-pulse opacity-20" style={{ top: "10%", left: "15%" }}></div>
-                <div className="absolute w-24 h-24 bg-pink-500 rounded-full animate-bounce opacity-20" style={{ top: "60%", right: "20%" }}></div>
+                <div className="absolute w-20 h-20 bg-purple-500 opacity-20 shape-animation" style={{ top: "10%", left: "15%", clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}></div>
+                <div className="absolute w-24 h-24 bg-pink-500 rounded-full animate-bounce opacity-40" style={{ top: "70%", right: "20%" }}></div>
+
+                <style jsx>{`
+                .shape-animation {
+                    animation: growShrink 5s linear infinite; /* Adjust duration as needed */
+                }
+
+                @keyframes growShrink {
+                    0% {
+                        transform: scale(1); /* Initial size */
+                    }
+                    50% {
+                        transform: scale(2); /* Double the size (adjust as needed) */
+                    }
+                    100% {
+                        transform: scale(1); /* Back to initial size */
+                    }
+                }
+            `}</style>
             </div>
         </div>
     );
