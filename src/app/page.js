@@ -190,7 +190,7 @@ export default function Home() {
 
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute w-20 h-20 bg-purple-500 opacity-20 shape-animation" style={{ top: "10%", left: "15%", clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}></div>
+                <div className="absolute w-20 h-20 bg-purple-500 opacity-20 shape-animation" style={{ top: "20%", left: "15%", clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}></div>
                 <div className="absolute w-24 h-24 bg-pink-500 rounded-full animate-bounce opacity-40" style={{ top: "70%", right: "20%" }}></div>
 
                 <style jsx>{`
