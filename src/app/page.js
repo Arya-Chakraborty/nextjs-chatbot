@@ -116,7 +116,7 @@ export default function Home() {
     };
 
     return (
-        <div className="bg-gradient-to-r from-amber-900 via-red-900 to-yellow-500 to-black min-h-screen flex flex-col items-center justify-center font-mono overflow-hidden relative">
+        <div className="bg-gradient-to-r from-[#4c1d09] via-[#b92a18] to-[#e18e04] lg:bg-gradient-to-r lg:from-amber-900 lg:via-red-900 lg:to-yellow-500 min-h-screen flex flex-col items-center justify-center font-mono overflow-hidden relative">
             {/* Chatbot Interface */}
             <div className="backdrop-blur-lg bg-opacity-30 p-8 rounded-3xl shadow-lg w-full max-w-3xl z-10">
                 <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 mb-6 text-center animate-pulse">
